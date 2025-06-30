@@ -91,7 +91,7 @@ const ScoreBoard: React.FC<ScoreBoardProps> = ({
       <div className="text-center mb-8">
         <h2 className="text-3xl font-bold gradient-text mb-4">Challenge Complete!</h2>
         <p className="text-gray-300 text-lg">
-          Here's how you performed in the deepfake detection challenge.
+          Here&apos;s how you performed in the deepfake detection challenge.
         </p>
       </div>
 

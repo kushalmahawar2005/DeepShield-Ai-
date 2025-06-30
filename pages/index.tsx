@@ -2,6 +2,7 @@ import React from 'react';
 import Head from 'next/head';
 import Hero from '../components/Hero';
 import FeatureCard from '../components/FeatureCard';
+import Link from 'next/link';
 
 const features = [
   {
@@ -312,12 +313,11 @@ const HomePage: React.FC = () => {
             >
               Try Telegram Bot
             </a>
-            <a 
-              href="/analyze" 
-              className="bg-white text-primary font-bold text-lg px-8 py-4 rounded-lg hover:bg-gray-100 transition-colors"
-            >
-              Web Analysis
-            </a>
+            <Link href="/analyze" legacyBehavior>
+              <a className="bg-white text-primary font-bold text-lg px-8 py-4 rounded-lg hover:bg-gray-100 transition-colors">
+                Web Analysis
+              </a>
+            </Link>
           </div>
         </div>
       </section>
