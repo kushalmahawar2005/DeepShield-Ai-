@@ -18,6 +18,34 @@ const LiveCamera: React.FC<LiveCameraProps> = ({ onAnalysisComplete, isActive = 
   const [error, setError] = useState<string | null>(null);
   const [isCameraSupported, setIsCameraSupported] = useState(true);
 
+  const analyzeFrame = useCallback(async (imageBlob: Blob) => {
+    if (isAnalyzing) return;
+
+    setIsAnalyzing(true);
+    setFrameCount(prev => prev + 1);
+
+    try {
+      // Simulate frame analysis (replace with real API call)
+      await new Promise(resolve => setTimeout(resolve, 500));
+      
+      const mockResult = {
+        is_deepfake: Math.random() > 0.8,
+        confidence: Math.random() * 100,
+        score: Math.random(),
+        features_analyzed: Math.floor(Math.random() * 10) + 5,
+        timestamp: new Date().toISOString(),
+        frame_number: frameCount + 1
+      };
+
+      setDetectionResult(mockResult);
+      onAnalysisComplete(mockResult);
+    } catch (error) {
+      console.error('Frame analysis error:', error);
+    } finally {
+      setIsAnalyzing(false);
+    }
+  }, [isAnalyzing, frameCount, onAnalysisComplete]);
+
   const startCamera = useCallback(async () => {
     try {
       setError(null);
@@ -95,35 +123,7 @@ const LiveCamera: React.FC<LiveCameraProps> = ({ onAnalysisComplete, isActive = 
         await analyzeFrame(blob);
       }
     }, 'image/jpeg', 0.8);
-  }, [isStreaming]);
-
-  const analyzeFrame = async (imageBlob: Blob) => {
-    if (isAnalyzing) return;
-
-    setIsAnalyzing(true);
-    setFrameCount(prev => prev + 1);
-
-    try {
-      // Simulate frame analysis (replace with real API call)
-      await new Promise(resolve => setTimeout(resolve, 500));
-      
-      const mockResult = {
-        is_deepfake: Math.random() > 0.8,
-        confidence: Math.random() * 100,
-        score: Math.random(),
-        features_analyzed: Math.floor(Math.random() * 10) + 5,
-        timestamp: new Date().toISOString(),
-        frame_number: frameCount + 1
-      };
-
-      setDetectionResult(mockResult);
-      onAnalysisComplete(mockResult);
-    } catch (error) {
-      console.error('Frame analysis error:', error);
-    } finally {
-      setIsAnalyzing(false);
-    }
-  };
+  }, [isStreaming, analyzeFrame]);
 
   const startAnalysis = useCallback(() => {
     if (!isStreaming) return;
@@ -290,10 +290,10 @@ const LiveCamera: React.FC<LiveCameraProps> = ({ onAnalysisComplete, isActive = 
       <div className="mt-4 p-3 bg-background-secondary rounded-lg">
         <h4 className="text-sm font-semibold mb-2 text-white">Live Camera Detection</h4>
         <div className="text-xs text-gray-400 space-y-1">
-          <p>• Camera will automatically start when you click "Start Live Detection"</p>
-          <p>• Analysis runs in real-time on each frame</p>
-          <p>• Results show confidence scores and detection status</p>
-          <p>• Click "Stop Camera" to end the session</p>
+          <p>&bull; Camera will automatically start when you click &quot;Start Live Detection&quot;</p>
+          <p>&bull; Analysis runs in real-time on each frame</p>
+          <p>&bull; Results show confidence scores and detection status</p>
+          <p>&bull; Click &quot;Stop Camera&quot; to end the session</p>
         </div>
       </div>
     </div>

@@ -1,5 +1,6 @@
 import React from 'react';
 import Head from 'next/head';
+import Link from "next/link";
 
 const AboutPage: React.FC = () => {
   return (
@@ -17,7 +18,7 @@ const AboutPage: React.FC = () => {
               <span className="gradient-text">About DeepShield AI</span>
             </h1>
             <p className="text-xl text-gray-300 max-w-3xl mx-auto">
-              We're on a mission to protect digital integrity and combat the spread of deepfakes through advanced AI technology
+              We&apos;re on a mission to protect digital integrity and combat the spread of deepfakes through advanced AI technology
             </p>
           </div>
 
@@ -27,7 +28,7 @@ const AboutPage: React.FC = () => {
               <div className="text-center">
                 <h2 className="text-3xl font-bold mb-6 text-white">Our Mission</h2>
                 <p className="text-xl text-gray-300 leading-relaxed max-w-4xl mx-auto">
-                  In today's digital age, deepfakes pose a significant threat to truth, trust, and democracy. 
+                  In today&apos;s digital age, deepfakes pose a significant threat to truth, trust, and democracy. 
                   DeepShield AI was created to combat this challenge by providing accessible, accurate, and 
                   real-time deepfake detection technology to everyone.
                 </p>
@@ -184,7 +185,7 @@ const AboutPage: React.FC = () => {
                   <div>
                     <h3 className="text-xl font-semibold mb-3 text-accent">MediaPipe Integration</h3>
                     <p className="text-gray-300 text-sm leading-relaxed">
-                      Real-time facial landmark detection and analysis using Google's MediaPipe 
+                      Real-time facial landmark detection and analysis using Google&apos;s MediaPipe 
                       for enhanced facial manipulation detection.
                     </p>
                   </div>
@@ -321,12 +322,11 @@ const AboutPage: React.FC = () => {
                 >
                   Try Telegram Bot
                 </a>
-                <a 
-                  href="/analyze" 
-                  className="bg-white text-primary font-bold text-lg px-8 py-4 rounded-lg hover:bg-gray-100 transition-colors"
-                >
-                  Web Analysis
-                </a>
+                <Link href="/analyze">
+                  <a className="bg-white text-primary font-bold text-lg px-8 py-4 rounded-lg hover:bg-gray-100 transition-colors">
+                    Web Analysis
+                  </a>
+                </Link>
               </div>
             </div>
           </section>

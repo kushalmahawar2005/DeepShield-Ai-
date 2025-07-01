@@ -79,24 +79,6 @@ const ChallengeModule: React.FC<ChallengeModuleProps> = ({ onComplete }) => {
 
   const question = sampleQuestions[currentQuestion];
 
-  // Timer effect
-  useEffect(() => {
-    if (timeLeft > 0 && !isAnswered) {
-      const timer = setTimeout(() => setTimeLeft(timeLeft - 1), 1000);
-      return () => clearTimeout(timer);
-    } else if (timeLeft === 0 && !isAnswered) {
-      handleAnswer(null); // Time's up
-    }
-  }, [timeLeft, isAnswered]);
-
-  // Reset timer for new question
-  useEffect(() => {
-    setTimeLeft(question.timeLimit);
-    setIsAnswered(false);
-    setUserAnswer(null);
-    setShowFeedback(false);
-  }, [currentQuestion, question.timeLimit]);
-
   const handleAnswer = useCallback((answer: boolean | null) => {
     if (isAnswered) return;
 
@@ -122,6 +104,24 @@ const ChallengeModule: React.FC<ChallengeModuleProps> = ({ onComplete }) => {
       }
     }, 3000);
   }, [isAnswered, question.isReal, score, streak, currentQuestion, onComplete]);
+
+  // Timer effect
+  useEffect(() => {
+    if (timeLeft > 0 && !isAnswered) {
+      const timer = setTimeout(() => setTimeLeft(timeLeft - 1), 1000);
+      return () => clearTimeout(timer);
+    } else if (timeLeft === 0 && !isAnswered) {
+      handleAnswer(null); // Time's up
+    }
+  }, [timeLeft, isAnswered, handleAnswer]);
+
+  // Reset timer for new question
+  useEffect(() => {
+    setTimeLeft(question.timeLimit);
+    setIsAnswered(false);
+    setUserAnswer(null);
+    setShowFeedback(false);
+  }, [currentQuestion, question.timeLimit]);
 
   const getDifficultyColor = (difficulty: string) => {
     switch (difficulty) {

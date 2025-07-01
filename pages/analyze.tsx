@@ -432,7 +432,7 @@ const AnalyzePage: React.FC = () => {
               <div className="text-4xl mb-4">📹</div>
               <p className="text-gray-300 mb-2">Camera Detection Ready</p>
               <p className="text-sm text-gray-400">
-                Click "Start Live Detection" to begin real-time analysis
+                Click &quot;Start Live Detection&quot; to begin real-time analysis
               </p>
             </div>
           )}
