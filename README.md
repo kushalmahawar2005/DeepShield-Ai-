@@ -308,6 +308,3 @@ If you do not provide real weights, the code will print a warning and use generi
 **Made with ❤️ by the DeepShield AI Team**
 
 *Protecting digital integrity, one detection at a time.* 
-
-
-Hi kushal
