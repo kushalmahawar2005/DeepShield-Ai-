@@ -308,3 +308,11 @@ If you do not provide real weights, the code will print a warning and use generi
 **Made with ❤️ by the DeepShield AI Team**
 
 *Protecting digital integrity, one detection at a time.* 
+
+
+Good evening everyone, 
+A backup session on HTML and CSS basics will be conducted tomorrow from 9:00 AM.
+Your participation is highly recommended if your basics are not yet clear.
+
+Best regards,
+Zeetron Networks Pvt. Ltd.
